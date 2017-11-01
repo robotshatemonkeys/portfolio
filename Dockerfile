@@ -26,7 +26,7 @@ ENV NODE_ENV=production
 ENV HOST 0.0.0.0
 
 
-# Create app directory
+# Create app directory dor docker
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
