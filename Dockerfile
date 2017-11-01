@@ -14,6 +14,7 @@ RUN apt-get update -q \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -yq nodejs \
