@@ -25,24 +25,16 @@ RUN apt-get install -yq nodejs \
 # Create Required Folders
 RUN mkdir -p /usr/api
 RUN mkdir -p /usr/api/temp
-RUN mkdir -p /etc/cron.minutely
 
-COPY . /usr/api
-WORKDIR /usr/api
+COPY . /usr/src/app/
+WORKDIR /usr/src/app/
 
-RUN npm install --production
-
-ENV HOST 0.0.0.0
-ENV PORT 3000
-EXPOSE  $PORT
-
-# Chom should be 600
-COPY cron/ /etc/cron.minutely/
-RUN chmod 0744 /etc/cron.minutely/hellocron
-RUN /usr/bin/crontab -u root /etc/cron.minutely/hellocron
-RUN touch /var/log/cron.log
+RUN npm install
 
 ONBUILD RUN npm install
 ONBUILD RUN npm run build
 
+ENV HOST 0.0.0.0
+ENV PORT 3000
+EXPOSE  $PORT
 CMD [ "npm", "start" ]
