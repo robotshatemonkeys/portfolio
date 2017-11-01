@@ -30,7 +30,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install app dependencies
-RUN apk update && apk upgrade && apk add git
+# RUN apt update && apt upgrade && apt add git
 
 COPY . /usr/src/app/
 RUN npm install
