@@ -4,12 +4,6 @@
   "description": "rhm portfolio",
   "author": "Federico Crivellaro <crivellarofederico@gmail.com>",
   "private": true,
-  "config": {
-    "nuxt": {
-      "host": "0.0.0.0",
-      "port": "8080"
-    }
-  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
