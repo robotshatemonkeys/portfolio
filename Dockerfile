@@ -29,8 +29,6 @@ RUN mkdir -p /usr/api/temp
 COPY . /usr/src/app/
 WORKDIR /usr/src/app/
 
-RUN npm install
-
 ONBUILD RUN npm install
 ONBUILD RUN npm run build
 
