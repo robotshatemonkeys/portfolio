@@ -15,7 +15,7 @@ RUN apt-get update -q \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_7.8.0-alpine.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -yq nodejs \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
