@@ -1,0 +1,16 @@
+{
+  "links": {
+    "home": "Inicio",
+    "about": "Sobre Nosotros",
+    "english": "Version inglés",
+    "spanish": "Version Español"
+  },
+  "home": {
+    "title": "Bienvenidos",
+    "introduction": "He comido perdices"
+  },
+  "about": {
+    "title": "About",
+    "introduction": "Introducción"
+  }
+}
