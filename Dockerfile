@@ -1,4 +1,8 @@
-FROM node:7.8.0-alpine
+FROM node:8.2.1
+
+ENV NODE_ENV=production
+ENV HOST 0.0.0.0
+
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -7,13 +11,11 @@ WORKDIR /usr/src/app
 # Install app dependencies
 RUN apk update && apk upgrade && apk add git
 
-ONBUILD COPY . /usr/src/app/
-ONBUILD RUN npm install
+COPY . /usr/src/app/
+RUN npm install
 
 # Build app
-ONBUILD RUN npm run build
+RUN npm run build
 
-ENV HOST 0.0.0.0
 EXPOSE 3000
-
 CMD [ "npm", "start" ]
