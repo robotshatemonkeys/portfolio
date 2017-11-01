@@ -1,38 +1,19 @@
-FROM ubuntu:latest
+FROM node:7.8.0-alpine
 
-# Install Utilities
-RUN apt-get update -q \
-    && apt-get install -yqq \
-    apt-utils \
-    cron \
-    curl \
-    vim \
-    sudo \
-    make \
-    gcc \
-    libkrb5-dev \
-    build-essential \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Create app directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-# Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-RUN apt-get install -yq nodejs \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Install app dependencies
+RUN apk update && apk upgrade && apk add git
 
-
-# Create Required Folders
-RUN mkdir -p /usr/api
-RUN mkdir -p /usr/api/temp
-
-COPY . /usr/src/app/
-WORKDIR /usr/src/app/
-
+ONBUILD COPY . /usr/src/app/
 ONBUILD RUN npm install
+
+# Build app
 ONBUILD RUN npm run build
 
 ENV HOST 0.0.0.0
-ENV PORT 3000
-EXPOSE  $PORT
+EXPOSE 3000
+
 CMD [ "npm", "start" ]
